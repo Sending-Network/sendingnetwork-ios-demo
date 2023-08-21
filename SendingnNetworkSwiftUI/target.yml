@@ -1,0 +1,82 @@
+name: SendingnNetworkSwiftUI
+
+schemes:
+  SendingnNetworkSwiftUI:
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+    build:
+      targets:
+        SendingnNetworkSwiftUI:
+        - running
+        - testing
+        - profiling
+        - analyzing
+        - archiving
+    profile:
+      config: Release
+    run:
+      config: Debug
+      disableMainThreadChecker: true
+    test:
+      config: Debug
+      disableMainThreadChecker: true
+      targets:
+      - SendingnNetworkSwiftUnitTests
+      gatherCoverageData: true
+      coverageTargets:
+        - SendingnNetworkSwiftUI
+
+targets:
+  SendingnNetworkSwiftUI:
+    type: application
+    platform: iOS
+    dependencies:
+    - target: DesignKit
+    - package: AnalyticsEvents
+    - package: Mapbox
+    - package: WysiwygComposer
+    sources:
+    - path: .
+      excludes:
+      # Don't include service implementations and coordinator/bridges in target.
+      - "**/SDNSDK/**"
+      - "**/Coordinator/**"
+      - "**/Test/**"
+    - path: ../SendingnNetwork/Managers/AppInfo/
+    - path: ../SendingnNetwork/Categories/Bundle.swift
+    - path: ../SendingnNetwork/Generated/Strings.swift
+    - path: ../SendingnNetwork/Generated/UntranslatedStrings.swift
+    - path: ../SendingnNetwork/Generated/Images.swift
+    - path: ../SendingnNetwork/Managers/Theme/
+    - path: ../SendingnNetwork/Managers/Locale/LocaleProviderType.swift
+    - path: ../Config/BuildSettings.swift
+    - path: ../SendingnNetwork/Modules/Room/TimelineCells/Styles/RoomTimelineStyleIdentifier.swift
+    - path: ../SendingnNetwork/Categories/String.swift
+    - path: ../SendingnNetwork/Categories/Character.swift
+    - path: ../SendingnNetwork/Categories/UIColor.swift
+    - path: ../SendingnNetwork/Categories/UISearchBar.swift
+    - path: ../SendingnNetwork/Categories/UIView.swift
+    - path: ../SendingnNetwork/Categories/UIApplication.swift
+    - path: ../SendingnNetwork/Categories/Codable.swift
+    - path: ../SendingnNetwork/Assets/en.lproj/Vector.strings
+    - path: ../SendingnNetwork/Modules/Analytics/AnalyticsScreen.swift
+    - path: ../SendingnNetwork/Modules/LocationSharing/LocationAuthorizationStatus.swift
+    - path: ../SendingnNetwork/Modules/QRCode/QRCodeGenerator.swift
+    - path: ../SendingnNetwork/Modules/VoiceBroadcast/VoiceBroadcastSDK/SDNSDK/VoiceBroadcastInfoState.swift
+    - path: ../SendingnNetwork/Assets/en.lproj/Untranslated.strings
+      buildPhase: resources
+    - path: ../SendingnNetwork/Assets/Images.xcassets
+      buildPhase: resources
+    - path: ../SendingnNetwork/Assets/SharedImages.xcassets
+      buildPhase: resources
+    configFiles:
+      Debug: Debug.xcconfig
+      Release: Release.xcconfig
+
+    postBuildScripts:
+    - name: 🧹 SwiftFormat
+      runOnlyWhenInstalling: false
+      shell: /bin/sh
+      script: "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --lint --lenient \"$PROJECT_DIR\"\n"

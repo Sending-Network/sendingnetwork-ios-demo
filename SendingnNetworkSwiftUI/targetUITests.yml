@@ -1,0 +1,82 @@
+name: SendingnNetworkSwiftUITests
+
+schemes:
+  SendingnNetworkSwiftUITests:
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+    build:
+      targets:
+        SendingnNetworkSwiftUITests:
+        - running
+        - testing
+        - profiling
+        - analyzing
+        - archiving
+    profile:
+      config: Release
+    run:
+      config: Debug
+      disableMainThreadChecker: true
+    test:
+      config: Debug
+      disableMainThreadChecker: true
+      targets:
+      - SendingnNetworkSwiftUITests
+      gatherCoverageData: true
+      coverageTargets:
+        - SendingnNetworkSwiftUI
+
+targets:
+  SendingnNetworkSwiftUITests:
+    type: bundle.ui-testing
+    platform: iOS
+
+    dependencies:
+    - target: SendingnNetworkSwiftUI
+    - package: AnalyticsEvents
+    - package: WysiwygComposer
+  
+    settings:
+      base:
+        TEST_TARGET_NAME: SendingnNetworkSwiftUI
+        PRODUCT_BUNDLE_IDENTIFIER: org.sdn.SendingnNetworkSwiftUITests$(rfc1034identifier)
+        SWIFT_OBJC_BRIDGING_HEADER: $(SRCROOT)/SendingnNetworkSwiftUI/SendingnNetworkSwiftUI-Bridging-Header.h
+        SWIFT_OBJC_INTERFACE_HEADER_NAME: GeneratedInterface-Swift.h
+        GENERATE_INFOPLIST_FILE: YES
+    sources:
+      # Source included/excluded here here are similar to SendingnNetworkSwiftUI as we
+      # need access to ScreenStates
+    - path: ../SendingnNetworkSwiftUI/Modules
+      excludes:
+      - "**/SDNSDK/**"
+      - "**/Coordinator/**"
+      - "**/Test/Unit/**"
+    - path: ../SendingnNetwork/Managers/AppInfo/
+    - path: ../SendingnNetwork/Categories/Bundle.swift
+    - path: ../SendingnNetwork/Generated/Strings.swift
+    - path: ../SendingnNetwork/Generated/UntranslatedStrings.swift
+    - path: ../SendingnNetwork/Generated/Images.swift
+    - path: ../SendingnNetwork/Managers/Theme/
+    - path: ../SendingnNetwork/Managers/Locale/LocaleProviderType.swift
+    - path: ../Config/BuildSettings.swift
+    - path: ../SendingnNetwork/Modules/Room/TimelineCells/Styles/RoomTimelineStyleIdentifier.swift
+    - path: ../SendingnNetwork/Categories/String.swift
+    - path: ../SendingnNetwork/Categories/Character.swift
+    - path: ../SendingnNetwork/Categories/UIColor.swift
+    - path: ../SendingnNetwork/Categories/UISearchBar.swift
+    - path: ../SendingnNetwork/Categories/UIView.swift
+    - path: ../SendingnNetwork/Categories/UIApplication.swift
+    - path: ../SendingnNetwork/Categories/Codable.swift
+    - path: ../SendingnNetwork/Assets/en.lproj/Vector.strings
+    - path: ../SendingnNetwork/Modules/Analytics/AnalyticsScreen.swift
+    - path: ../SendingnNetwork/Modules/LocationSharing/LocationAuthorizationStatus.swift
+    - path: ../SendingnNetwork/Modules/QRCode/QRCodeGenerator.swift
+    - path: ../SendingnNetwork/Modules/VoiceBroadcast/VoiceBroadcastSDK/SDNSDK/VoiceBroadcastInfoState.swift
+    - path: ../SendingnNetwork/Assets/en.lproj/Untranslated.strings
+      buildPhase: resources
+    - path: ../SendingnNetwork/Assets/Images.xcassets
+      buildPhase: resources
+    - path: ../SendingnNetwork/Assets/SharedImages.xcassets
+      buildPhase: resources

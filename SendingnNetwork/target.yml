@@ -1,0 +1,91 @@
+name: SendingnNetwork
+
+schemes:
+  SendingnNetwork:
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+    build:
+      targets:
+        SendingnNetwork:
+        - running
+        - testing
+        - profiling
+        - analyzing
+        - archiving
+    profile:
+      config: Release
+    run:
+      config: Debug
+      disableMainThreadChecker: true
+    test:
+      config: Debug
+      disableMainThreadChecker: true
+      targets:
+      - SendingnNetworkTests
+      gatherCoverageData: true
+      coverageTargets:
+        - SendingnNetwork
+
+targets:
+  SendingnNetwork:
+    type: application
+    platform: iOS
+
+    dependencies:
+    # Disabled due to crypto corruption issues.
+    # https://github.com/Sending-Network/sendingnetwork-ios/issues/7618
+    # - target: SendingnNetworkShareExtension
+    # - target: SiriIntents
+    - target: SendingnNetworkNSE
+    - target: DesignKit
+    - target: CommonKit
+    - package: AnalyticsEvents
+    - package: Mapbox
+    - package: OrderedCollections
+    - package: SwiftOGG
+    - package: WysiwygComposer
+    - package: DeviceKit
+    - package: DTCoreText
+
+    configFiles:
+      Debug: Debug.xcconfig
+      Release: Release.xcconfig
+
+    preBuildScripts:
+
+    - name: 🛠 SwiftGen
+      runOnlyWhenInstalling: false
+      shell: /bin/sh
+      script: "\"${PODS_ROOT}/SwiftGen/bin/swiftgen\" config run --config \"Tools/SwiftGen/swiftgen-config.yml\"\n"
+    - name: 📖 locheck
+      runOnlyWhenInstalling: false
+      shell: /bin/sh
+      script: |
+        # homebrew uses a non-standard directory on M1
+        if [[ $(arch) = arm64 ]]; then export PATH="$PATH:/opt/homebrew/bin"; fi
+        xcrun --sdk macosx mint run Asana/locheck@0.9.6 discoverlproj --treat-warnings-as-errors --ignore-missing --ignore lproj_file_missing_from_translation "$PROJECT_DIR/SendingnNetwork/Assets"
+
+    sources:
+    - path: ../SendingnNetworkSwiftUI/Modules
+      # SendingnNetwork will provide it's own LocaleProviderType so exclude.
+      excludes:
+      - "Common/Locale/LocaleProvider.swift"
+      - "**/Test/**"
+    - path: ../Tools
+      excludes:
+        - "Logs"
+        - "Release"
+        - "Templates/*.sh"
+    - path: ../Config
+    - path: .
+      excludes:
+        - "Modules/Room/EmojiPicker/Data/EmojiMart/EmojiJSONStore.swift"
+        - "Assets/ar.lproj/**" # RTL is broken so languages are disabled for now
+        - "Assets/he.lproj/**"
+        - "Assets/pr.lproj/**" # Unsupported language on iOS
+    - path: ../SendingnNetworkShareExtension/Shared
+    - path: Modules/SDNKit
+      excludes:
+        - "**/*.md" # excludes all files with the .md extension

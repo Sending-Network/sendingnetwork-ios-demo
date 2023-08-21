@@ -1,0 +1,9 @@
+{
+    "m.node": {
+        "base_url": "https://sdn.company.com"
+    },
+    "m.identity_server": {
+        "base_url": "https://identity.company.com"
+    }
+}
+

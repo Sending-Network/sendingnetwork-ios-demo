@@ -1,0 +1,74 @@
+name: SendingnNetworkTests
+
+schemes:
+  SendingnNetworkTests:
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+    build:
+      targets:
+        SendingnNetworkTests:
+        - running
+        - testing
+        - profiling
+        - analyzing
+        - archiving
+    profile:
+      config: Release
+    run:
+      config: Debug
+      disableMainThreadChecker: true
+    test:
+      config: Debug
+      disableMainThreadChecker: true
+      targets:
+      - SendingnNetworkTests
+      gatherCoverageData: true
+      coverageTargets:
+        - SendingnNetwork
+
+targets:
+  SendingnNetworkTests:
+    type: bundle.unit-test
+    platform: iOS
+
+    dependencies:
+    - target: SendingnNetwork
+    - package: AnalyticsEvents
+
+    configFiles:
+      Debug: Debug.xcconfig
+      Release: Release.xcconfig
+
+    settings:
+      base:
+        BUNDLE_LOADER: $(TEST_HOST)
+        FRAMEWORK_SEARCH_PATHS: $(SDKROOT)/Developer/Library/Frameworks $(inherited)
+        INFOPLIST_FILE: SendingnNetworkTests/Info.plist
+        LD_RUNPATH_SEARCH_PATHS: $(inherited) @executable_path/Frameworks @loader_path/Frameworks
+        PRODUCT_BUNDLE_IDENTIFIER: org.sdn.$(PRODUCT_NAME:rfc1034identifier)
+        PRODUCT_NAME: SendingnNetworkTests
+        SWIFT_OBJC_BRIDGING_HEADER: SendingnNetworkTests/SendingnNetworkTests-Bridging-Header.h
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/Element.app/Element
+      configs:
+        Debug:
+        Release:
+          PROVISIONING_PROFILE: $(SendingnNetwork_PROVISIONING_PROFILE)
+          PROVISIONING_PROFILE_SPECIFIER: $(SendingnNetwork_PROVISIONING_PROFILE_SPECIFIER)
+
+    sources:
+    - path: .
+    - path: ../Config/Configurable.swift
+    - path: ../Config/BuildSettings.swift
+    - path: ../SendingnNetwork/Categories/Bundle.swift
+    - path: ../SendingnNetwork/Managers/AppInfo/AppInfo.swift
+    - path: ../SendingnNetwork/Managers/AppInfo/AppVersion.swift
+    - path: ../SendingnNetwork/Managers/Settings/SendingnNetworkSettings.swift
+    - path: ../SendingnNetwork/Managers/EncryptionKeyManager/EncryptionKeyManager.swift
+    - path: ../SendingnNetwork/Managers/KeyValueStorage/
+    - path: ../SendingnNetwork/PropertyWrappers/UserDefaultsBackedPropertyWrapper.swift
+    - path: ../SendingnNetwork/Modules/Room/TimelineCells/Styles/RoomTimelineStyleIdentifier.swift
+    - path: ../SendingnNetwork/Modules/Room/EventMenu/EventMenuBuilder.swift
+    - path: ../SendingnNetwork/Modules/Room/EventMenu/EventMenuItemType.swift
+    - path: ../SendingnNetwork/Modules/VoiceBroadcast/VoiceBroadcastSDK/SDNSDK/VoiceBroadcastSettings.swift

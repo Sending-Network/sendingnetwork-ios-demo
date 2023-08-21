@@ -1,0 +1,8 @@
+{
+    "m.node": {
+        "base_url": "https://sdn-client.sdn.org"
+    },
+    "m.identity_server": {
+        "base_url": "https://vector.im"
+    }
+}

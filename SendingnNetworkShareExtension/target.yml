@@ -1,0 +1,90 @@
+name: SendingnNetworkShareExtension
+
+schemes:
+  SendingnNetworkShareExtension:
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+    build:
+      targets:
+        SendingnNetworkShareExtension:
+        - running
+        - testing
+        - profiling
+        - analyzing
+        - archiving
+    profile:
+      config: Release
+    run:
+      askForAppToLaunch: true
+      config: Debug
+      debugEnabled: false
+      disableMainThreadChecker: true
+      launchAutomaticallySubstyle: 2
+    test:
+      config: Debug
+      disableMainThreadChecker: true
+
+targets:
+  SendingnNetworkShareExtension:
+    platform: iOS
+    type: app-extension
+
+    dependencies:
+    - package: AnalyticsEvents
+    - package: DeviceKit
+    - package: DTCoreText
+
+    configFiles:
+      Debug: Debug.xcconfig
+      Release: Release.xcconfig
+
+    sources:
+    - path: .
+    - path: ../SendingnNetwork/Modules/Common/SegmentedViewController/SegmentedViewController.m
+    - path: ../SendingnNetwork/Categories/Bundle.swift
+    - path: ../SendingnNetwork/Categories/MXEvent.swift
+    - path: ../SendingnNetwork/Managers/Theme/
+    - path: ../SendingnNetwork/Utils/AvatarGenerator.m
+    - path: ../Config/BuildSettings.swift
+    - path: ../SendingnNetwork/Categories/Character.swift
+    - path: ../SendingnNetwork/Categories/MXKImageView.swift
+    - path: ../SendingnNetwork/Categories/MXRoom+SendingnNetwork.m
+    - path: ../Config/Configurable.swift
+    - path: ../Config/CommonConfiguration.swift
+    - path: ../SendingnNetwork/Experiments/
+    - path: ../SendingnNetwork/Utils/UserNameColorGenerator.swift
+    - path: ../SendingnNetwork/Categories/MXRoomSummary+SendingnNetwork.m
+    - path: ../SendingnNetwork/Managers/EncryptionKeyManager/EncryptionKeyManager.swift
+    - path: ../SendingnNetwork/Managers/KeyValueStorage
+    - path: ../SendingnNetwork/Managers/Settings/SendingnNetworkSettings.swift
+    - path: ../SendingnNetwork/Managers/AppInfo/
+    - path: ../SendingnNetwork/Categories/UIColor.swift
+    - path: ../SendingnNetwork/Categories/UISearchBar.swift
+    - path: ../SendingnNetwork/Categories/String.swift
+    - path: ../SendingnNetwork/Categories/UIView.swift
+    - path: ../SendingnNetwork/Categories/UITextView.swift
+    - path: ../SendingnNetwork/Modules/Common/Recents/Model/RecentCellData.m
+    - path: ../SendingnNetwork/PropertyWrappers/UserDefaultsBackedPropertyWrapper.swift
+    - path: ../SendingnNetwork/Generated/Strings.swift
+    - path: ../SendingnNetwork/Generated/Images.swift
+    - path: ../SendingnNetwork/Managers/Locale/LocaleProviderType.swift
+    - path: ../SendingnNetwork/Managers/Locale/LocaleProvider.swift
+    - path: ../SendingnNetwork/Modules/Common/SegmentedViewController/SegmentedViewController.xib
+      buildPhase: resources
+    - path: ../SendingnNetwork/Assets/en.lproj/Vector.strings
+      buildPhase: resources
+    - path: ../SendingnNetwork/Assets/SharedImages.xcassets
+      buildPhase: resources
+    - path: ../SendingnNetwork/Modules/SDNKit
+      excludes:
+        - "**/MXKAuthenticationViewController.*"
+        - "Views/Authentication/**"
+    - path: ../SendingnNetwork/Modules/Analytics
+    - path: ../SendingnNetwork/Managers/UserSessions
+      excludes:
+        - "**/*.md" # excludes all files with the .md extension
+    - path: ../SendingnNetwork/Modules/Room/TimelineCells/Styles/RoomTimelineStyleIdentifier.swift
+    - path: ../SendingnNetwork/Modules/VoiceBroadcast/VoiceBroadcastSDK/MatrixSDK
+    - path: ../SendingnNetwork/Modules/Encryption/EncryptionTrustLevel.swift

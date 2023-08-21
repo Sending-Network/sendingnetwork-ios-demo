@@ -1,0 +1,62 @@
+name: SendingnNetworkSwiftUnitTests
+
+schemes:
+  SendingnNetworkSwiftUnitTests:
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+    build:
+      targets:
+        SendingnNetworkSwiftUnitTests:
+        - running
+        - testing
+        - profiling
+        - analyzing
+        - archiving
+    profile:
+      config: Release
+    run:
+      config: Debug
+      disableMainThreadChecker: true
+    test:
+      config: Debug
+      disableMainThreadChecker: true
+      targets:
+      - SendingnNetworkSwiftUnitTests
+      gatherCoverageData: true
+      coverageTargets:
+        - SendingnNetworkSwiftUI
+
+targets:
+  SendingnNetworkSwiftUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+
+    dependencies:
+    - target: SendingnNetworkSwiftUI
+    - package: AnalyticsEvents
+
+    configFiles:
+      Debug: Debug.xcconfig
+      Release: Release.xcconfig
+
+    settings:
+      base:
+        FRAMEWORK_SEARCH_PATHS: $(SDKROOT)/Developer/Library/Frameworks $(inherited)
+        INFOPLIST_FILE: SendingnNetworkSwiftUI/Info.plist
+        LD_RUNPATH_SEARCH_PATHS: $(inherited) @executable_path/Frameworks @loader_path/Frameworks
+        PRODUCT_BUNDLE_IDENTIFIER: org.sdn.$(PRODUCT_NAME:rfc1034identifier)
+        PRODUCT_NAME: SendingnNetworkSwiftUnitTests
+      configs:
+        Debug:
+        Release:
+          PROVISIONING_PROFILE: $(SendingnNetwork_PROVISIONING_PROFILE)
+          PROVISIONING_PROFILE_SPECIFIER: $(SendingnNetwork_PROVISIONING_PROFILE_SPECIFIER)
+    sources:
+    - path: ../SendingnNetwork/Modules/Analytics/AnalyticsScreen.swift
+    - path: ../SendingnNetworkSwiftUI/Modules
+      includes:
+      - "**/Test"
+      excludes:
+      - "**/Test/UI/**"

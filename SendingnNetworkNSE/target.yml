@@ -1,0 +1,85 @@
+name: SendingnNetworkNSE
+
+schemes:
+  SendingnNetworkNSE:
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+    build:
+      targets:
+        SendingnNetworkNSE:
+        - running
+        - testing
+        - profiling
+        - analyzing
+        - archiving
+    profile:
+      config: Release
+    run:
+      askForAppToLaunch: true
+      config: Debug
+      debugEnabled: false
+      disableMainThreadChecker: true
+      launchAutomaticallySubstyle: 2
+    test:
+      config: Debug
+      disableMainThreadChecker: true
+
+targets:
+  SendingnNetworkNSE:
+    platform: iOS
+    type: app-extension
+
+    dependencies:
+    - package: AnalyticsEvents
+    - package: DeviceKit
+    - package: DTCoreText
+
+    configFiles:
+      Debug: Debug.xcconfig
+      Release: Release.xcconfig
+
+    sources: 
+    - path: .
+    - path: ../SendingnNetwork/Managers/Settings/SendingnNetworkSettings.swift
+    - path: ../Config/BuildSettings.swift
+    - path: ../SendingnNetwork/Utils/DataProtectionHelper.swift
+    - path: ../Config/CommonConfiguration.swift
+    - path: ../SendingnNetwork/Experiments/
+    - path: ../SendingnNetwork/Managers/PushNotification/PushNotificationStore.swift
+    - path: ../SendingnNetwork/Modules/SetPinCode/PinCodePreferences.swift
+    - path: ../SendingnNetwork/Managers/KeyValueStorage/Extensions/Keychain.swift
+    - path: ../SendingnNetwork/Modules/SetPinCode/SetupBiometrics/BiometricsAuthenticationPresenter.swift
+    - path: ../SendingnNetwork/Categories/UNUserNotificationCenter.swift
+    - path: ../SendingnNetwork/Managers/KeyValueStorage/KeyValueStore.swift
+    - path: ../SendingnNetwork/Managers/Locale/LocaleProvider.swift
+    - path: ../SendingnNetwork/Managers/Locale/LocaleProviderType.swift
+    - path: ../SendingnNetwork/Managers/EncryptionKeyManager/EncryptionKeyManager.swift
+    - path: ../SendingnNetwork/Categories/Bundle.swift
+    - path: ../SendingnNetwork/Categories/MXEvent.swift
+    - path: ../SendingnNetwork/Generated/Strings.swift
+    - path: ../SendingnNetwork/Generated/Images.swift
+    - path: ../SendingnNetwork/Managers/KeyValueStorage/KeychainStore.swift
+    - path: ../SendingnNetwork/Managers/LocalAuthentication/LocalAuthenticationService.swift
+    - path: ../Config/Configurable.swift
+    - path: ../SendingnNetwork/Utils/Constants.swift
+    - path: ../SendingnNetwork/Categories/String.swift
+    - path: ../SendingnNetwork/Categories/Character.swift
+    - path: ../SendingnNetwork/Managers/Widgets/WidgetConstants.m
+    - path: ../SendingnNetwork/PropertyWrappers/UserDefaultsBackedPropertyWrapper.swift
+    - path: ../SendingnNetwork/Modules/SDNKit
+      excludes:
+        - "Controllers/**"
+        - "Models/*List/**"
+        - "Views/**"
+        
+    - path: ../SendingnNetwork/Modules/Analytics
+    - path: ../SendingnNetwork/Managers/UserSessions
+    - path: ../SendingnNetwork/Managers/AppInfo/
+      excludes:
+        - "**/*.md" # excludes all files with the .md extension
+    - path: ../SendingnNetwork/Modules/Room/TimelineCells/Styles/RoomTimelineStyleIdentifier.swift
+    - path: ../SendingnNetwork/Modules/VoiceBroadcast/VoiceBroadcastSDK/SDNSDK
+    - path: ../SendingnNetwork/Managers/Theme
+    - path: ../SendingnNetwork/Categories/UIColor.swift

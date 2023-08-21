@@ -1,0 +1,11 @@
+framework module ParticleAuthServiceWrap {
+  umbrella header "ParticleAuthServiceWrap.h"
+
+  export *
+  module * { export * }
+}
+
+module ParticleAuthServiceWrap.Swift {
+  header "ParticleAuthServiceWrap-Swift.h"
+  requires objc
+}

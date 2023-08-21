@@ -1,0 +1,73 @@
+name: SiriIntents
+
+schemes:
+  SiriIntents:
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+    build:
+      targets:
+        SiriIntents:
+        - running
+        - testing
+        - profiling
+        - analyzing
+        - archiving
+    profile:
+      config: Release
+    run:
+      askForAppToLaunch: true
+      config: Debug
+      debugEnabled: false
+      disableMainThreadChecker: true
+      launchAutomaticallySubstyle: 2
+    test:
+      config: Debug
+      disableMainThreadChecker: true
+
+targets:
+  SiriIntents:
+    platform: iOS
+    type: app-extension
+
+    dependencies:
+    - sdk: Intents.framework
+    - package: AnalyticsEvents
+    - package: DeviceKit
+    - package: DTCoreText
+
+    configFiles:
+      Debug: Debug.xcconfig
+      Release: Release.xcconfig
+
+    sources:
+    - path: .
+    - path: ../SendingnNetwork/Categories/Bundle.swift
+    - path: ../SendingnNetwork/Categories/MXEvent.swift
+    - path: ../Config/CommonConfiguration.swift
+    - path: ../SendingnNetwork/Experiments/
+    - path: ../Config/BuildSettings.swift
+    - path: ../Config/Configurable.swift
+    - path: ../SendingnNetwork/Managers/Settings/SendingnNetworkSettings.swift
+    - path: ../SendingnNetwork/Managers/EncryptionKeyManager/EncryptionKeyManager.swift
+    - path: ../SendingnNetwork/Managers/KeyValueStorage
+    - path: ../SendingnNetwork/PropertyWrappers/UserDefaultsBackedPropertyWrapper.swift
+    - path: ../SendingnNetwork/Managers/Locale/LocaleProviderType.swift
+    - path: ../SendingnNetwork/Managers/Locale/LocaleProvider.swift
+    - path: ../SendingnNetwork/Modules/SDNKit
+      excludes:
+        - "Controllers/**"
+        - "Models/*List/**"
+        - "Views/**"
+    - path: ../SendingnNetwork/Modules/Analytics
+    - path: ../SendingnNetwork/Managers/UserSessions
+    - path: ../SendingnNetwork/Managers/AppInfo/
+    - path: ../SendingnNetwork/Managers/Locale/LocaleProviderType.swift
+    - path: ../SendingnNetwork/Generated/Strings.swift
+      excludes:
+        - "**/*.md" # excludes all files with the .md extension
+    - path: ../SendingnNetwork/Modules/Room/TimelineCells/Styles/RoomTimelineStyleIdentifier.swift
+    - path: ../SendingnNetwork/Modules/VoiceBroadcast/VoiceBroadcastSDK/MatrixSDK
+    - path: ../SendingnNetwork/Managers/Theme
+    - path: ../SendingnNetwork/Categories/UIColor.swift
