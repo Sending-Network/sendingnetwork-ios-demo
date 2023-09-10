@@ -8,9 +8,18 @@
 
 1. Configure the company's domain in SDNSDK:
 
+
+
 ```
 static  NSString * **const** sdnDemoBaseUrl = @"https://XXX";
 ```
+
+
+You can also use this : https://portal0101.sending.network
+
+static  NSString * **const** sdnDemoBaseUrl = @"https://portal0101.sending.network"
+
+
 
 2. Use the local path to reference $sdnSDKVersionSpec = { :path => '../sendingnetwork-ios/SDNSDK.podspec'}
 
