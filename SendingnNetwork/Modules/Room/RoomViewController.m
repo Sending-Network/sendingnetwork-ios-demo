@@ -5027,7 +5027,37 @@ static CGSize kThreadListBarButtonItemImageSize;
     currentAlert = callActionSheet;
 }
 
-- (void)placeCallWithVideo2:(BOOL)video
+
+- (void)placeCallWithVideo2:(BOOL)video {
+    NSString *url1 = BuildSettings.serverConfigDefaultNodeUrlString;
+    NSString *url2 = BuildSettings.serverConfigDefaultIdentityServerUrlString;
+
+    printf("serverConfigDefaultIdentityServerUrlString=\(url1)");
+    printf("serverConfigDefaultIdentityServerUrlString=\(url2)");
+
+    [self.roomDataSource.mxSession.sdnRestClient getMeetingSvr:^(NSString *url) {
+        if(url.length >0) {
+            if([url hasPrefix:@"http"]){
+            }else{
+                url = [NSString stringWithFormat:@"https://%@",url];
+            }
+            if([url hasSuffix:@"/"]&&url.length > 0 ){
+                url = [url substringWithRange:NSMakeRange(0, url.length - 1)];
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:url forKey:@"getMeetingSvr"];
+        }
+        [self placeCallWithVideo2Inner:video];
+    } failure:^(NSError *error) {
+       NSString *url =  [[NSUserDefaults standardUserDefaults] objectForKey:@"getMeetingSvr"];
+        if (url.length > 0) {
+            [self placeCallWithVideo2Inner:video];
+        } else {
+            
+        }
+    }];
+}
+
+- (void)placeCallWithVideo2Inner:(BOOL)video
 {
     Widget *jitsiWidget = [self.customizedRoomDataSource jitsiWidget];
     if (jitsiWidget)

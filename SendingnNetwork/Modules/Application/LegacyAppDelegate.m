@@ -484,7 +484,7 @@ NSString *const AppDelegateUniversalLinkDidChangeNotification = @"AppDelegateUni
     
 #ifdef CALL_STACK_JINGLE
     // Setup Jitsi
-    NSURL *jitsiServerUrl = BuildSettings.jitsiServerUrl;
+    NSURL *jitsiServerUrl = [NSURL  URLWithString:BuildSettings.getMeetingSrv] ;
     if (jitsiServerUrl)
     {
         [JitsiService.shared configureDefaultConferenceOptionsWith:jitsiServerUrl];

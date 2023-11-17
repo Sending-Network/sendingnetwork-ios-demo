@@ -87,7 +87,17 @@ final class BuildSettings: NSObject {
     }
     
     // Element-Web instance for the app
-    static let applicationWebAppUrlString = "https://app.sendingnetwork.io"
+
+    static var getMeetingSrv: String {
+        if let url = UserDefaults.standard.object(forKey: "getMeetingSvr") as? String {
+            return url
+        } else {
+            // Handle the situation when "getMeetingSvr" key is not found in UserDefaults or it's not a String.
+            return ""
+        }
+    }
+    
+
     
     
     // MARK: - Localization
@@ -102,10 +112,10 @@ final class BuildSettings: NSObject {
     static let forceNodeSelection = false
 
     /// Default server proposed on the authentication screen
-    static let serverConfigDefaultNodeUrlString = sdnDemoBaseUrl
+    static let serverConfigDefaultNodeUrlString = MXSDKOptions.sharedInstance().sdnBaseUrl
     
     /// Default identity server
-    static let serverConfigDefaultIdentityServerUrlString = sdnDemoBaseUrl
+    static let serverConfigDefaultIdentityServerUrlString = MXSDKOptions.sharedInstance().sdnBaseUrl
         
     static let serverConfigSygnalAPIUrlString = "https://sdn.org/_api/push/v1/notify"
     
@@ -219,7 +229,7 @@ final class BuildSettings: NSObject {
     // Jitsi server used outside integrations to create conference calls from the call button in the timeline.
     // Setting this to nil effectively disables Jitsi conference calls (given that there is no wellknown override).
     // Note: this will not remove the conference call button, use roomScreenAllowVoIPForNonDirectRoom setting.
-    static let jitsiServerUrl: URL? = URL(string: "https://jitsi.SendingnNetwork.im")
+    static let jitsiServerUrl: URL? = URL(string: " https://meetina.semperfortis1996.com")
 
     
     // MARK: - Features

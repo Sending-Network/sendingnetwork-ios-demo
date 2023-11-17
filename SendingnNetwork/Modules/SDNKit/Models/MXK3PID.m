@@ -80,7 +80,7 @@
             [self cancelCurrentRequest];
         }
         
-        NSString *identityServer = sdnDemoBaseUrl; //restClient.identityServer;
+        NSString *identityServer = MXSDKOptions.sharedInstance.sdnBaseUrl; //restClient.identityServer;
         if (identityServer)
         {
             // Use same identity server as REST client for validation token submission

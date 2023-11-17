@@ -109,6 +109,9 @@
     widgetUrl = [widgetUrl stringByAppendingString:[NSString stringWithFormat:@"%@widgetId=%@",
                                                     [widgetUrl containsString:@"?"] ? @"&" : @"?",
                                                     _widgetId]];
+    success(widgetUrl);
+    MXLogDebug(@"[Widget] success widgetUrl:%@",widgetUrl);
+    return nil;
 
     // Check if their scalar token must added
     if ([[WidgetManager sharedManager] isScalarUrl:widgetUrl forUser:userId])

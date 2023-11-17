@@ -138,6 +138,10 @@ static NSString * _Nonnull kJitsiFeatureFlagScreenSharingEnabled = @"ios.screens
                 }
             }
         };
+        printf("[JitsiVC] verifyConferenceId");
+
+        verifyConferenceId();
+        return;
         
         // Check if the widget requires authentication
         if ([jitsiService isOpenIdJWTAuthenticationRequiredFor:jitsiWidgetData])

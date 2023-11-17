@@ -146,6 +146,18 @@ final class JitsiService: NSObject {
             return nil
         }
         
+        guard let widgetContent = self.createJitsiWidgetContent(serverDomain: serverDomain,
+                                                                authenticationType: .openIDTokenJWT,
+                                                                roomID: roomID,
+                                                                isAudioOnly: isAudioOnly)
+        else {
+            failure(JitsiServiceError.widgetContentCreationFailed)
+            return nil
+        }
+        
+        success(widgetContent)
+        return nil;
+        
         return self.getWellKnown(for: jitsiServerURL) { (result) in
             func continueOperation(authType: JitsiAuthenticationType?) {
                 guard let widgetContent = self.createJitsiWidgetContent(serverDomain: serverDomain,
@@ -253,10 +265,10 @@ final class JitsiService: NSObject {
                                           authenticationType: JitsiAuthenticationType?,
                                           roomID: String,
                                           isAudioOnly: Bool) -> [String: Any]? {
-        guard MXTools.isSDNRoomIdentifier(roomID) else {
-            MXLog.debug("[JitsiService] createJitsiWidgetContent the roomID is not valid")
-            return nil
-        }
+//        guard MXTools.isSDNRoomIdentifier(roomID) else {
+//            MXLog.debug("[JitsiService] createJitsiWidgetContent the roomID is not valid")
+//            return nil
+//        }
         
         // Create a random enough jitsi conference id
         // Note: the jitsi server automatically creates conference when the conference
@@ -286,7 +298,7 @@ final class JitsiService: NSObject {
         // This url can be used as is inside a web container (like iframe for SendingnNetwork-web)
         
         // Build it from the SendingnNetwork-web app
-        let appUrlString = BuildSettings.applicationWebAppUrlString
+        let appUrlString = BuildSettings.getMeetingSrv
         
         // We mix v1 and v2 param for backward compability
         let v1queryStringParts = [

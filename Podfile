@@ -126,10 +126,10 @@ abstract_target 'SendingnNetworkPods' do
     import_SwiftUI_pods
   end
 
-  target "SendingnNetworkNSE" do
-    import_SDNSDK
-    import_SDNKit_pods
-  end
+ # target "SendingnNetworkNSE" do
+   # import_SDNSDK
+   # import_SDNKit_pods
+ # end
 
 
 

@@ -135,17 +135,28 @@ class CallPresenter: NSObject {
         MXLog.debug("[CallPresenter] displayJitsiCall: for widget: \(widget.widgetId)")
         
         #if canImport(JitsiMeetSDK)
+
         let createJitsiBlock = { [weak self] in
-            guard let self = self else { return }
+            guard let self = self else {
+                MXLog.debug("[CallPresenter] createJitsiBlock is nil");
+                return
+            }
             self.jitsiVC = JitsiViewController()
             self.jitsiVC?.openWidget(widget, withVideo: true, success: { [weak self] in
-                guard let self = self else { return }
+
+                guard let self = self else {
+                    MXLog.debug("[CallPresenter] openWidget self nil");
+                    return
+                }
+                MXLog.debug("[CallPresenter] jitsiVC = self.jitsiV ");
                 if let jitsiVC = self.jitsiVC {
                     jitsiVC.delegate = self
                     self.presentCallVC(jitsiVC)
                     self.startJitsiCall(withWidget: widget)
+                    MXLog.debug("[CallPresenter] jitsiVC");
                 }
             }, failure: { [weak self] (error) in
+                MXLog.debug("[CallPresenter] failure");
                 guard let self = self else { return }
                 self.jitsiVC = nil
                 AppDelegate.theDelegate().showAlert(withTitle: nil,

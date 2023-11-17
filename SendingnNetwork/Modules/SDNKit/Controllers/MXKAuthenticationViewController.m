@@ -540,7 +540,7 @@
 
 - (void)updateIdentityServerURL:(NSString*)url
 {
-    url = sdnDemoBaseUrl;
+    url = MXSDKOptions.sharedInstance.sdnBaseUrl;
     
     if (![self.identityService.identityServer isEqualToString:url])
     {

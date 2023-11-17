@@ -11,13 +11,13 @@
 
 
 ```
-static  NSString * **const** sdnDemoBaseUrl = @"https://XXX";
+        sdkOptions.sdnBaseUrl = @"https://portal0101.sending.network"
 ```
 
 
 You can also use this : https://portal0101.sending.network
 
-static  NSString * **const** sdnDemoBaseUrl = @"https://portal0101.sending.network"
+sdkOptions.sdnBaseUrl = @"https://portal0101.sending.network"
 
 
 

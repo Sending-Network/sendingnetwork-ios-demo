@@ -277,13 +277,14 @@ NSString *const WidgetManagerErrorDomain = @"WidgetManagerErrorDomain";
     // SendingnNetwork-Web still uses V1 type
     NSString *widgetId = [NSString stringWithFormat:@"%@_%@_%@", kWidgetTypeJitsiV1, room.mxSession.myUser.userId, @((uint64_t)([[NSDate date] timeIntervalSince1970] * 1000))];
     
-    NSURL *preferredJitsiServerUrl = [room.mxSession vc_nodeConfiguration].jitsi.serverURL;
-    
+//    NSURL *preferredJitsiServerUrl = [room.mxSession vc_nodeConfiguration].jitsi.serverURL;
+    NSURL *preferredJitsiServerUrl = [NSURL URLWithString:BuildSettings.getMeetingSrv];
+
     if (!preferredJitsiServerUrl)
     {
         MXLogDebug(@"[WidgetManager] createJitsiWidgetInRoom: Error: No Jitsi server URL provided");
         failure(self.errorForUnavailableJitsiURL);
-        return nil;
+//        return nil;
     }
 
     JitsiService *jitsiService = JitsiService.shared;

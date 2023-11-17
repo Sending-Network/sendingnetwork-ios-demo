@@ -59,7 +59,7 @@ final class NodeConfigurationBuilder: NSObject {
         // Jitsi configuration
         let jitsiPreferredDomain: String?
         let jitsiServerURL: URL?
-        let hardcodedJitsiServerURL: URL? = BuildSettings.jitsiServerUrl
+        let hardcodedJitsiServerURL: URL? = URL(string: BuildSettings.getMeetingSrv)
         
         if let preferredDomain = vectorWellKnownJitsiConfiguration?.preferredDomain {
             jitsiPreferredDomain = preferredDomain

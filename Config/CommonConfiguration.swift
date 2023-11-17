@@ -58,7 +58,8 @@ class CommonConfiguration: NSObject, Configurable {
     
     private func setupSDNSDKSettings() {
         let sdkOptions = MXSDKOptions.sharedInstance()
-        
+        sdkOptions.sdnBaseUrl = "https://portal0101.sending.network"
+
         sdkOptions.applicationGroupIdentifier = BuildSettings.applicationGroupIdentifier
         
         // Define the media cache version
@@ -93,6 +94,7 @@ class CommonConfiguration: NSObject, Configurable {
         sdkOptions.enableNewClientInformationFeature = SendingnNetworkSettings.shared.enableClientInformationFeature
         
         sdkOptions.cryptoMigrationDelegate = self
+        
     }
     
     private func makeASCIIUserAgent() -> String? {
