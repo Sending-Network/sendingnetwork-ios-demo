@@ -2361,7 +2361,7 @@
             MXWeakify(self);
 //            [self->mxRestClient postPreLoginDID:self.did address:@"" random:self.random success:^(MXPreLoginResponse *response) {
                 
-            [self->mxRestClient postPreLoginDID:self.did success:^(MXPreLoginResponse *response) {
+            [self->mxRestClient postPreLoginDID:self.did address:@"" success:^(MXPreLoginResponse *response) {
 
                 MXStrongifyAndReturnIfNil(self);
                 [self endActivityIndicator];
@@ -2427,6 +2427,7 @@
     [param setValue:signature  forKey:@"app_token"];
 
 //    if ([FedModeManager.shareManager currentNodeAddress]) {
+    
         [param setValue:@(1) forKey:@"is_mul_fed"];
 //    }
     self.signature = sign;
