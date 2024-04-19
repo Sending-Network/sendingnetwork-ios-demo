@@ -87,7 +87,7 @@ abstract_target 'SendingnNetworkPods' do
   pod 'web3swift'
   pod 'OLMKit'
   pod 'zxcvbn-ios'
-#  pod 'ParticleAuthServiceWrap', '0.0.4'
+ #  pod 'ParticleAuthServiceWrap', '0.0.6'
 #  pod 'ParticleAuthServiceWrap',:path =>'./ParticleAuthServiceWrap'
 
   # Tools

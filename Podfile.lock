@@ -57,9 +57,9 @@ PODS:
     - Reusable/View (= 4.1.2)
   - Reusable/Storyboard (4.1.2)
   - Reusable/View (4.1.2)
-  - SDNSDK (0.26.12):
-    - SDNSDK/Core (= 0.26.12)
-  - SDNSDK/Core (0.26.12):
+  - SDNSDK (0.1.0):
+    - SDNSDK/Core (= 0.1.0)
+  - SDNSDK/Core (0.1.0):
     - AFNetworking (~> 4.0.0)
     - GZIP (~> 1.3.0)
     - libbase58 (~> 0.1.4)
@@ -67,7 +67,7 @@ PODS:
     - OLMKit (~> 3.2.5)
     - Realm (= 10.27.0)
     - SwiftyBeaver (= 1.9.5)
-  - SDNSDK/JingleCallStack (0.26.12):
+  - SDNSDK/JingleCallStack (0.1.0):
     - JitsiMeetSDKLite (= 8.1.2-lite)
     - SDNSDK/Core
   - secp256k1.c (0.1.2)
@@ -206,7 +206,7 @@ SPEC CHECKSUMS:
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   KituraContracts: e845e60dc8627ad0a76fa55ef20a45451d8f830b
   KTCenterFlowLayout: 6e02b50ab2bd865025ae82fe266ed13b6d9eaf97
-  libbase58: 7c040313537b8c44b6e2d15586af8e21f7354efd
+  libbase58: 8abc2a53ac38cd37720c0acbc53ef3660e9016c2
   libPhoneNumber-iOS: 0a32a9525cf8744fe02c5206eb30d571e38f7d75
   LoggerAPI: ad9c4a6f1e32f518fdb43a1347ac14d765ab5e3d
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
@@ -216,7 +216,7 @@ SPEC CHECKSUMS:
   ReadMoreTextView: 19147adf93abce6d7271e14031a00303fe28720d
   Realm: 9ca328bd7e700cc19703799785e37f77d1a130f2
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
-  SDNSDK: 8a65a26403c8b8649366dcd7904064600b6b8d50
+  SDNSDK: 587c9d8553830fc235a96e448db6d88e65c03ae1
   secp256k1.c: db47b726585d80f027423682eb369729e61b3b20
   Sentry: 63ca44f5e0c8cea0ee5a07686b02e56104f41ef7
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
@@ -235,6 +235,6 @@ SPEC CHECKSUMS:
   zxcvbn-ios: fef98b7c80f1512ff0eec47ac1fa399fc00f7e3c
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 56c47b4616daaea2cfb928368957dd720a5171c4
+PODFILE CHECKSUM: 1af7883fbc2bdd5aa60641a2cf4d5edee31c8d2a
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.14.3

@@ -1,0 +1,247 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ParticleAuthServiceWrap
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+@_exported import ParticleAuthServiceWrap
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_inheritsConvenienceInitializers @objc public class WrapParticleAuthService : ObjectiveC.NSObject {
+  @objc public static func login(type: ParticleAuthServiceWrap.WrapLoginType, account: Swift.String? = nil, supportAuthType: [ParticleAuthServiceWrap.WrapSupportAuthType] = [WrapSupportAuthType.all], loginFormMode: Swift.Bool = false, successHandler: @escaping ((ParticleAuthServiceWrap.WrapUserInfo?) -> Swift.Void), failureHandler: @escaping ((any Swift.Error) -> Swift.Void))
+  @objc public static func registerSDK()
+  @objc public static func handUrl(url: Foundation.URL) -> Swift.Bool
+  @objc public static func signMessage(message: Swift.String, successHandler: @escaping ((Swift.String) -> Swift.Void), failureHandler: @escaping ((any Swift.Error) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class WrapSecurityAccountInfo : ObjectiveC.NSObject {
+  @objc public var email: Swift.String? {
+    @objc get
+  }
+  @objc public var phone: Swift.String? {
+    @objc get
+  }
+  @objc public var hasSetPaymentPassword: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class WrapWalletInfo : ObjectiveC.NSObject {
+  @objc final public var uuid: Swift.String {
+    @objc get
+  }
+  @objc final public var chainName: Swift.String {
+    @objc get
+  }
+  @objc final public var publicAddress: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class WrapThirdPartyWarpper : ObjectiveC.NSObject {
+  @objc final public var provider: Swift.String? {
+    @objc get
+  }
+  @objc final public var userInfo: ParticleAuthServiceWrap.WrapThirdPartyUserInfoWarpper? {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class WrapThirdPartyUserInfoWarpper : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public var id: Swift.String? {
+    @objc get
+  }
+  @objc final public var name: Swift.String? {
+    @objc get
+  }
+  @objc final public var email: Swift.String? {
+    @objc get
+  }
+  @objc final public var picture: Swift.String? {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class WrapUserInfo : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public var token: Swift.String {
+    @objc get
+  }
+  @objc final public var uuid: Swift.String {
+    @objc get
+  }
+  @objc final public var wallets: [ParticleAuthServiceWrap.WrapWalletInfo] {
+    @objc get
+  }
+  @objc final public var securityAccount: ParticleAuthServiceWrap.WrapSecurityAccountInfo? {
+    @objc get
+  }
+  @objc final public var id: Swift.Int {
+    @objc get
+  }
+  @objc final public var avatar: Swift.String? {
+    @objc get
+  }
+  @objc final public var createdAt: Swift.String? {
+    @objc get
+  }
+  @objc final public var updateAt: Swift.String? {
+    @objc get
+  }
+  @objc final public var email: Swift.String? {
+    @objc get
+  }
+  @objc final public var appleEmail: Swift.String? {
+    @objc get
+  }
+  @objc final public var appleId: Swift.String? {
+    @objc get
+  }
+  @objc final public var facebookEmail: Swift.String? {
+    @objc get
+  }
+  @objc final public var facebookId: Swift.String? {
+    @objc get
+  }
+  @objc final public var googleEmail: Swift.String? {
+    @objc get
+  }
+  @objc final public var googleId: Swift.String? {
+    @objc get
+  }
+  @objc final public var name: Swift.String? {
+    @objc get
+  }
+  @objc final public var phone: Swift.String? {
+    @objc get
+  }
+  @objc final public var discordId: Swift.String? {
+    @objc get
+  }
+  @objc final public var discordEmail: Swift.String? {
+    @objc get
+  }
+  @objc final public var githubId: Swift.String? {
+    @objc get
+  }
+  @objc final public var githubEmail: Swift.String? {
+    @objc get
+  }
+  @objc final public var twitchId: Swift.String? {
+    @objc get
+  }
+  @objc final public var twitchEmail: Swift.String? {
+    @objc get
+  }
+  @objc final public var microsoftId: Swift.String? {
+    @objc get
+  }
+  @objc final public var microsoftEmail: Swift.String? {
+    @objc get
+  }
+  @objc final public var linkedinId: Swift.String? {
+    @objc get
+  }
+  @objc final public var linkedinEmail: Swift.String? {
+    @objc get
+  }
+  @objc final public var twitterId: Swift.String? {
+    @objc get
+  }
+  @objc final public var twitterEmail: Swift.String? {
+    @objc get
+  }
+  @objc final public var thirdParty: ParticleAuthServiceWrap.WrapThirdPartyWarpper? {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class WrapSupportAuthType : ObjectiveC.NSObject {
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc public static var all: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var google: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var facebook: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var apple: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var discord: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var github: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var twitch: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var microsoft: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var linkedin: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var email: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var phone: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc public static var twitter: ParticleAuthServiceWrap.WrapSupportAuthType {
+    @objc get
+  }
+  @objc deinit
+}
+@objc public enum WrapLoginType : Swift.Int {
+  case email
+  case phone
+  case google
+  case facebook
+  case apple
+  case discord
+  case github
+  case twitch
+  case microsoft
+  case linkedin
+  case jwt
+  case twitter
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class WrapParticleNetwork : ObjectiveC.NSObject {
+  @objc public enum EthereumNetwork : Swift.Int, Swift.Codable {
+    case mainnet
+    case goerli
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @_hasMissingDesignatedInitializers @objc public class ChainInfo : ObjectiveC.NSObject, Swift.Codable {
+    @objc public static func ethereum(_ network: ParticleAuthServiceWrap.WrapParticleNetwork.EthereumNetwork) -> ParticleAuthServiceWrap.WrapParticleNetwork.ChainInfo
+    @objc deinit
+    public func encode(to encoder: any Swift.Encoder) throws
+    required public init(from decoder: any Swift.Decoder) throws
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension ParticleAuthServiceWrap.WrapLoginType : Swift.Equatable {}
+extension ParticleAuthServiceWrap.WrapLoginType : Swift.Hashable {}
+extension ParticleAuthServiceWrap.WrapLoginType : Swift.RawRepresentable {}
+extension ParticleAuthServiceWrap.WrapParticleNetwork.EthereumNetwork : Swift.Equatable {}
+extension ParticleAuthServiceWrap.WrapParticleNetwork.EthereumNetwork : Swift.Hashable {}
+extension ParticleAuthServiceWrap.WrapParticleNetwork.EthereumNetwork : Swift.RawRepresentable {}
