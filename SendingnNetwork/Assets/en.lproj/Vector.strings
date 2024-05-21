@@ -1999,6 +1999,8 @@ Tap the + to start adding people.";
 "room_info_list_several_members" = "%@ members";
 "room_info_list_section_other" = "Other";
 "room_info_back_button_title" = "Room Info";
+"room_info_list_section_hide_room" = "hide Room";
+
 
 // MARK: - Dial Pad
 "dialpad_title" = "Dial pad";

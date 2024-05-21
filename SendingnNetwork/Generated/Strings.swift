@@ -6019,6 +6019,10 @@ public class VectorL10n: NSObject {
   public static var roomInfoListOneMember: String { 
     return VectorL10n.tr("Vector", "room_info_list_one_member") 
   }
+  /// hide Room
+  public static var roomInfoListSectionHideRoom: String { 
+    return VectorL10n.tr("Vector", "room_info_list_section_hide_room") 
+  }
   /// Other
   public static var roomInfoListSectionOther: String { 
     return VectorL10n.tr("Vector", "room_info_list_section_other") 

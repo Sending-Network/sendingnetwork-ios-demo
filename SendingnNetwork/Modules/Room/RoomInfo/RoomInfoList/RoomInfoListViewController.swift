@@ -179,6 +179,13 @@ final class RoomInfoListViewController: UIViewController {
             self.viewModel.process(viewAction: .navigate(target: .pollHistory))
         }
         
+        let hideRoomRow = Row(type: .default, icon: Asset.Images.pollHistory.image, text: VectorL10n.roomInfoListSectionHideRoom, accessoryType: .disclosureIndicator) {
+            print("leave room click")
+            
+            self.viewModel.process(viewAction: .hideRoom)
+
+        }
+        
         let rowUploads = Row(type: .default, icon: Asset.Images.scrollup.image, text: VectorL10n.roomDetailsFiles, accessoryType: .disclosureIndicator) {
             self.viewModel.process(viewAction: .navigate(target: .uploads))
         }
@@ -202,7 +209,7 @@ final class RoomInfoListViewController: UIViewController {
         if BuildSettings.pollsEnabled {
             rows.append(rowPollHistory)
         }
-        
+        rows.append(hideRoomRow)
         rows.append(rowUploads)
         if !viewData.isEncrypted {
             rows.append(rowSearch)
@@ -210,6 +217,12 @@ final class RoomInfoListViewController: UIViewController {
 
         let sectionSettings = Section(header: VectorL10n.roomInfoListSectionOther,
                                       rows: rows,
+                                      footer: nil)
+        
+        
+        
+        let hideRoom = Section(header: VectorL10n.roomInfoListSectionHideRoom,
+                                      rows: [hideRoomRow],
                                       footer: nil)
         
         let leaveTitle = viewData.basicInfoViewData.isDirect ?
@@ -224,6 +237,7 @@ final class RoomInfoListViewController: UIViewController {
         
         tmpSections.append(sectionSettings)
         tmpSections.append(sectionLeave)
+        tmpSections.append(hideRoom)
         
         sections = tmpSections
     }

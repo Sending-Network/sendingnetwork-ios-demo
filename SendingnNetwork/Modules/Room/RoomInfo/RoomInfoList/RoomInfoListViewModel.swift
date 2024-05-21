@@ -79,7 +79,10 @@ final class RoomInfoListViewModel: NSObject, RoomInfoListViewModelType {
             self.leave()
         case .cancel:
             self.coordinatorDelegate?.roomInfoListViewModelDidCancel(self)
+        case .hideRoom:
+            self.hideRoom()
         }
+        
     }
     
     // MARK: - Private
@@ -117,6 +120,29 @@ final class RoomInfoListViewModel: NSObject, RoomInfoListViewModelType {
                 self.update(viewState: .error(error))
             }
         }
+    }
+    
+    private func hideRoom() {
+//        self.room.hideRoom( session.myUserId, roomId: room.roomId) { response in
+////            print(\(response))
+//        }
+        
+        self.room.showRoomWithRoomId(roomId: room.roomId) { response in
+//            print(\(response))
+        }
+        
+        
+//        self.stopObservingSummaryChanges()
+//        self.update(viewState: .loading)
+//        self.room.leave { (response) in
+//            switch response {
+//            case .success:
+//                self.coordinatorDelegate?.roomInfoListViewModelDidLeaveRoom(self)
+//            case .failure(let error):
+//                self.startObservingSummaryChanges()
+//                self.update(viewState: .error(error))
+//            }
+//        }
     }
     
     private func update(viewState: RoomInfoListViewState) {
